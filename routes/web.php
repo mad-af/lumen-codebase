@@ -1,6 +1,8 @@
 <?php
 
-/** @var \Laravel\Lumen\Routing\Router $router */
+use App\Helpers\Wrapper\Wrapper;
+
+// @var \Laravel\Lumen\Routing\Router $router
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,4 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+$router->get('/api/v1/ping', function () { return Wrapper::sendResponse(Wrapper::result('pong', 'This service is running properly')); });
