@@ -6,3 +6,4 @@ Homestead.yaml
 .env
 .php-cs-fixer.cache
 .phpunit.result.cache
+.phplint-cache

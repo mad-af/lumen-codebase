@@ -4,13 +4,23 @@ namespace App\Helpers\Wrapper;
 
 class Wrapper
 {
-    public static function result($data, $massage = '')
+    public static function data($data, $massage = '')
     {
         return [
             'err' => null,
             'data' => $data,
             'massage' => $massage,
             'code' => 200,
+        ];
+    }
+
+    public static function error($massage = '', $code = 500)
+    {
+        return [
+            'err' => true,
+            'data' => '',
+            'massage' => $massage,
+            'code' => $code,
         ];
     }
 
