@@ -19,5 +19,5 @@ $router->get('/api/v1/ping', function () {
     return Wrapper::sendResponse(Wrapper::data('pong', 'This service is running properly'));
 });
 
-$router->get('api/v1/user', ['uses' => 'User@GetUser']);
-$router->post('api/v1/user', ['uses' => 'User@registerUser']);
+$router->get('api/v1/user', ['middleware' => 'basicAuth', 'uses' => 'UserController@GetUser']);
+$router->get('api/v1/users', ['middleware' => 'jwtAuth', 'uses' => 'UserController@registerUser']);

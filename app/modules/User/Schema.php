@@ -2,12 +2,10 @@
 
 namespace App\modules\User;
 
-use App\Helpers\Wrapper\Wrapper;
-
-class Worker
+class Schema
 {
-    public function GetUser()
-    {
-        return Wrapper::data('APA KABAR');
-    }
+    public const REGISTER_USER = [
+        'username' => [],
+        'password' => [],
+    ];
 }

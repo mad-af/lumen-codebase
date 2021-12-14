@@ -8,7 +8,13 @@ class Worker
 {
     public function GetUser()
     {
-        return Wrapper::data('APA KABAR');
+        $coba = [
+            'username' => '',
+            'password' => '',
+        ];
+        $token = auth()->attempt($coba);
+
+        return Wrapper::data($token);
     }
 
     public function registerUser()

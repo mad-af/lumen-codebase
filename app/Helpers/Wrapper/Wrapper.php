@@ -24,7 +24,7 @@ class Wrapper
         ];
     }
 
-    public static function sendResponse($param)
+    public static function sendResponse($param, $header = [])
     {
         $data = $param['data'];
         $message = $param['massage'];
@@ -48,6 +48,6 @@ class Wrapper
             ];
         }
 
-        return response()->json($response, $code);
+        return response()->json($response, $code, $header);
     }
 }
