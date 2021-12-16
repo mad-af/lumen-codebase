@@ -53,8 +53,7 @@ class Handler extends ExceptionHandler
         $message = $exception->getMessage() ?? 'Contact developer!!';
         if ($exception instanceof NotFoundHttpException) {
             $message = '404 Not Found';
-        }
-        else if ($exception instanceof ValidationException) {
+        } elseif ($exception instanceof ValidationException) {
             $errors = array_values($exception->errors());
             $error = array_shift($errors);
             $code = 422;

@@ -2,5 +2,6 @@
 
 namespace App\Modules\User\Queries;
 
-class Schema {
+class Schema
+{
 }

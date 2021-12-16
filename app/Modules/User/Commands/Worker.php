@@ -4,8 +4,10 @@ namespace App\Modules\User\Commands;
 
 use App\Helpers\Wrapper\Wrapper;
 
-interface WorkerInterface {
+interface WorkerInterface
+{
     public function registerUser(array $payload);
+
     public function loginUser(array $payload);
 }
 

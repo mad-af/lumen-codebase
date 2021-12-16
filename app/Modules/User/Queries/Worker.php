@@ -4,8 +4,10 @@ namespace App\Modules\User\Queries;
 
 use App\Helpers\Wrapper\Wrapper;
 
-interface WorkerInterface {
+interface WorkerInterface
+{
     public function getListUser();
+
     public function getProfile();
 }
 
