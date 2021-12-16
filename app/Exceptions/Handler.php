@@ -50,11 +50,17 @@ class Handler extends ExceptionHandler
     {
         $rendered = parent::render($request, $exception);
         $code = $rendered->getStatusCode();
-        $massage = $exception->getMessage() ?? 'Contact developer!!';
+        $message = $exception->getMessage() ?? 'Contact developer!!';
         if ($exception instanceof NotFoundHttpException) {
-            $massage = 'API not found';
+            $message = '404 Not Found';
+        }
+        else if ($exception instanceof ValidationException) {
+            $errors = array_values($exception->errors());
+            $error = array_shift($errors);
+            $code = 422;
+            $message = array_merge(...$error);
         }
 
-        return Wrapper::sendResponse(Wrapper::error($massage, $code));
+        return Wrapper::sendResponse(Wrapper::error($message, $code));
     }
 }

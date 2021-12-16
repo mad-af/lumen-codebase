@@ -4,22 +4,22 @@ namespace App\Helpers\Wrapper;
 
 class Wrapper
 {
-    public static function data($data, $massage = '')
+    public static function data($data, $message = '')
     {
         return [
             'err' => null,
             'data' => $data,
-            'massage' => $massage,
+            'message' => $message,
             'code' => 200,
         ];
     }
 
-    public static function error($massage = '', $code = 500)
+    public static function error($message = '', $code = 500)
     {
         return [
             'err' => true,
             'data' => '',
-            'massage' => $massage,
+            'message' => $message,
             'code' => $code,
         ];
     }
@@ -27,7 +27,7 @@ class Wrapper
     public static function sendResponse($param, $header = [])
     {
         $data = $param['data'];
-        $message = $param['massage'];
+        $message = $param['message'];
         $code = $param['code'];
 
         $response = [];
