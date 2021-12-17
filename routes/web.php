@@ -21,5 +21,5 @@ $router->get('/api/v1/ping', function () {
 
 $router->post('api/v1/user/register', ['middleware' => 'basicAuth', 'uses' => 'UserController@registerUser']);
 $router->post('api/v1/user/login', ['middleware' => 'basicAuth', 'uses' => 'UserController@loginUser']);
-$router->get('api/v1/user', ['middleware' => 'jwtAuthbasicAuth', 'uses' => 'UserController@getListUser']);
+$router->get('api/v1/user', ['middleware' => 'jwtAuth', 'uses' => 'UserController@getListUser']);
 $router->get('api/v1/user/{userId}', ['middleware' => 'basicAuth', 'uses' => 'UserController@getProfile']);
