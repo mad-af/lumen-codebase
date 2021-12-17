@@ -57,9 +57,9 @@ class Handler extends ExceptionHandler
             $errors = array_values($exception->errors());
             $error = array_shift($errors);
             $code = 422;
-            $message = array_merge(...$error);
+            $message = $error[0][0];
         }
 
-        return Wrapper::sendResponse(Wrapper::error($message, $code));
+        return Wrapper::sendException($message, $code);
     }
 }

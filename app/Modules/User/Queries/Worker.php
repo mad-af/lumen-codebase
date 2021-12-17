@@ -3,23 +3,31 @@
 namespace App\Modules\User\Queries;
 
 use App\Helpers\Wrapper\Wrapper;
+use App\Modules\User\Queries\Service as UserQuery;
 
 interface WorkerInterface
 {
     public function getListUser();
 
-    public function getProfile();
+    public function getProfile(array $payload);
 }
 
 class Worker implements WorkerInterface
 {
+    public function __construct()
+    {
+        $this->userQuery = new UserQuery();
+    }
+
     public function getListUser()
     {
         return Wrapper::data('$token');
     }
 
-    public function getProfile()
+    public function getProfile(array $payload)
     {
-        return Wrapper::data('Hallo');
+        $user = $this->userQuery->findOne($payload);
+
+        return Wrapper::data($user);
     }
 }

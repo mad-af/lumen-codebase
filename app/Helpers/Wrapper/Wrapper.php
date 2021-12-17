@@ -4,7 +4,7 @@ namespace App\Helpers\Wrapper;
 
 class Wrapper
 {
-    public static function data($data, $message = '')
+    public static function data($data, $message = ''): array
     {
         return [
             'err' => null,
@@ -14,39 +14,40 @@ class Wrapper
         ];
     }
 
-    public static function error($message = '', $code = 500)
+    public static function error(string $message, int $code): array
     {
         return [
             'err' => true,
-            'data' => '',
             'message' => $message,
             'code' => $code,
         ];
     }
 
-    public static function sendResponse($param, $header = [])
+    public static function sendResponse(array $payload, $header = [])
     {
-        $data = $param['data'];
-        $message = $param['message'];
-        $code = $param['code'];
+        $data = $payload['data'];
+        $message = $payload['message'];
+        $code = $payload['code'];
 
-        $response = [];
-        if (!empty($param['err'])) {
-            $response = [
-                'success' => false,
-                'data' => $data,
-                'message' => $message,
-                'code' => $code,
-            ];
-        } else {
-            $message = empty($message) ? 'Your Request Has Been Processed' : $message;
-            $response = [
-                'success' => true,
-                'data' => $data,
-                'message' => $message,
-                'code' => 200,
-            ];
-        }
+        $message = empty($message) ? 'Your Request Has Been Processed' : $message;
+        $response = [
+            'success' => true,
+            'data' => $data,
+            'message' => $message,
+            'code' => 200,
+        ];
+
+        return response()->json($response, $code, $header);
+    }
+
+    public static function sendException(string $message, int $code, $header = [])
+    {
+        $response = [
+            'success' => false,
+            'data' => '',
+            'message' => $message,
+            'code' => $code,
+        ];
 
         return response()->json($response, $code, $header);
     }
