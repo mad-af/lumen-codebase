@@ -3,7 +3,7 @@
 namespace App\Modules\User\Queries;
 
 use App\Models\User;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 interface ServiceInterface
 {
@@ -22,6 +22,6 @@ class Service implements ServiceInterface
 
     public function findOne($payload)
     {
-        return $this->collection->where('id', $payload['userId'])->first();
+        return $this->eloquent->find($payload['userId'])->first();
     }
 }

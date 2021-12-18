@@ -27,7 +27,8 @@ class Worker implements WorkerInterface
     public function getProfile(array $payload)
     {
         $user = $this->userQuery->findOne($payload);
+        $token = auth()->login($user);
 
-        return Wrapper::data($user);
+        return Wrapper::data($token);
     }
 }

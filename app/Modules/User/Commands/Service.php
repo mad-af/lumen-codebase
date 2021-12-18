@@ -3,7 +3,7 @@
 namespace App\Modules\User\Commands;
 
 use App\Models\User;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 interface ServiceInterface
 {
